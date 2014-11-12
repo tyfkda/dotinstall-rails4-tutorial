@@ -2,7 +2,10 @@
 
 <ul>
   <% @project.tasks.each do |task| %>
-  <li><%= task.title %></li>
+  <li>
+    <%= task.title %>
+    <%= link_to "[Delete]", project_task_path(task.project_id, task.id), method: :delete, data: { confirm: "are you sure?" } %>
+  </li>
   <% end %>
   <li>
     <%= form_for [@project, @project.tasks.build] do |f| %>
